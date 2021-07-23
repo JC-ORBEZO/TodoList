@@ -2,7 +2,9 @@ import {Table,Button} from "react-bootstrap";
 
 const Task = ({addTask,tasks,setTasks,deleteTask,mostrar}) => {
     const removeTask=(id)=>{
-      deleteTask(id);
+      //deleteTask(id);
+      const proba=tasks.filter(task=>task.id!==id);
+      setTasks(proba);
     }
 
     return (
@@ -26,7 +28,7 @@ const Task = ({addTask,tasks,setTasks,deleteTask,mostrar}) => {
         <td>{task.description}</td>
         <td className="text-center">
             <Button variant="primary" onClick={()=>removeTask(task.id)}>❌</Button>
-            <Button variant="success" onClick={()=>mostrar()}>✍</Button>
+            <Button variant="success" onClick={()=>mostrar(task)}>✍</Button>
         </td>
     </tr>)}    
     
